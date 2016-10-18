@@ -1,28 +1,40 @@
 import React, {PropTypes, Component} from 'react';
+import { Control, Form, actions } from 'react-redux-form';
 import TodoTextInput from './TodoTextInput';
 
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.handleSave = this.handleSave.bind(this);
   }
 
-  handleSave(text) {
-    if (text.length !== 0) {
-      this.props.addTodo(text);
-    }
+  handleSubmit(values) {
+    // Do anything you want with the form value
+    console.log(JSON.stringify(values, null, 2));
   }
 
   render() {
     return (
-      <header className="header">
-        <h1>todos</h1>
-        <TodoTextInput
-          newTodo
-          onSave={this.handleSave}
-          placeholder="What needs to be done?"
-          />
-      </header>
+      <Form
+        model="scene"
+        onSubmit={(val) => this.handleSubmit(val)}
+      >
+        <label>Red</label>
+        <Control.text model="scene.backgroundredcolour" />
+
+        <label>Green</label>
+        <Control.text model="scene.backgroundgreencolour" />
+
+        <label>Blue</label>
+        <Control.text model="scene.backgroundbluecolour" />
+
+        <label>xwidth</label>
+        <Control.text model="scene.xsize" />
+
+        <label>ywidth</label>
+        <Control.text model="scene.ysize" />
+
+        <button>Submit!</button>
+      </Form>
     );
   }
 }
