@@ -1,6 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+
+import { PageHeader, Jumbotron } from 'react-bootstrap';
+
 import Header from '../components/Header';
 import MainSection from '../components/MainSection';
 import RenderBox from '../components/RenderBox';
@@ -11,16 +14,20 @@ class App extends Component {
     const {scene, todos, actions} = this.props;
     return (
       <div>
-
-        <Header
-          addTodo={actions.addTodo}
-          />
+        <PageHeader>Example page header <small>Subtext for header</small></PageHeader>
+        <Jumbotron>
+          <Header
+            addTodo={actions.addTodo}
+            />
+        </Jumbotron>
+        <div>
           <RenderBox scene={scene}
-          />
-        <MainSection
-          todos={todos}
-          actions={actions}
-          />
+            />
+          <MainSection
+            todos={todos}
+            actions={actions}
+            />
+        </div>
       </div>
     );
   }
