@@ -14,7 +14,7 @@ class App extends Component {
     const {scene, todos, actions} = this.props;
     return (
       <div>
-        <PageHeader>Example page header <small>Subtext for header</small></PageHeader>
+        <PageHeader>GraphMathArt <small>converting functions in actual art</small></PageHeader>
         <Jumbotron>
           <Header
             addTodo={actions.addTodo}
