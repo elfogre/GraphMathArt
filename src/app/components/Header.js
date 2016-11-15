@@ -1,6 +1,7 @@
 import React, {PropTypes, Component} from 'react';
 import { Control, Form, actions } from 'react-redux-form';
 import TodoTextInput from './TodoTextInput';
+import { Grid, Row, Col, FormControl, ControlLabel, FormGroup, Button } from 'react-bootstrap';
 
 class Header extends Component {
   constructor(props) {
@@ -18,22 +19,42 @@ class Header extends Component {
         model="scene"
         onSubmit={(val) => this.handleSubmit(val)}
       >
-        <label>Red</label>
-        <Control.text model="scene.backgroundredcolour" />
+        <Grid>
+          <Row className="show-grid">
+            <Col md={2}>
+              <FormGroup controlId="red">
+              <ControlLabel>Red</ControlLabel>
+              <Control.text model="scene.backgroundredcolour" />
+              </FormGroup>
+            </Col>
 
-        <label>Green</label>
-        <Control.text model="scene.backgroundgreencolour" />
+            <Col xs={4}>
+              <label>Green</label>
+              <Control.text model="scene.backgroundgreencolour" />
+            </Col>
 
-        <label>Blue</label>
-        <Control.text model="scene.backgroundbluecolour" />
+            <Col xs={4}>
+              <label>Blue</label>
+              <Control.text model="scene.backgroundbluecolour" />
+            </Col>
 
-        <label>xwidth</label>
-        <Control.text model="scene.xsize" />
+          </Row>
+        </Grid>
+        <Grid>
+          <Row className="show-grid">
+            <Col xs={4}>
+            <label>xwidth</label>
+            <Control.text model="scene.xsize" />
+            </Col>
 
-        <label>ywidth</label>
-        <Control.text model="scene.ysize" />
+            <Col xs={4}>
+            <label>ywidth</label>
+            <Control.text model="scene.ysize" />
+            </Col>
+          </Row>
+        </Grid>
 
-        <button>Submit!</button>
+        <Button  type="submit">Submit!</Button>
       </Form>
     );
   }
