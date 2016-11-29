@@ -34,28 +34,11 @@ class RenderBox extends Component {
         canvasData.data[index + 3] = a;
     }
     updateCanvas() {
-
-        ctx.fillStyle = "cyan";
-        ctx.fillRect(0, 0, this.props.scene.scene.xsize, this.props.scene.scene.ysize);
-        //var canvasData = ctx.getImageData(0, 0, 300, 300);
-
-        // --- Logic
-        //console.log(this.props.scene.backgroundredcolour);
         var canvasData = eval("var canvasData = ctx.getImageData(0, 0, "+this.props.scene.scene.xsize+", "+this.props.scene.scene.ysize+"); for (var x = 0; x < "+this.props.scene.scene.xsize+"; x++) { for (var y = 0; y < "+this.props.scene.scene.ysize+"; y++) { this.drawPixel (x,y, "+this.props.scene.scene.backgroundredcolour+"%256, "+this.props.scene.scene.backgroundgreencolour+"%256, "+this.props.scene.scene.backgroundbluecolour+"%256, 255, canvasData);}}; canvasData;");
-        if (t>800) {
-            timeSign=-1
+        if (! this.props.scene.scene.timepaused) {
+          //t = this.props.scene.scene.t;
+          t = eval(this.props.scene.scene.timeIncrement);
         }
-        if (t<0) {
-            timeSign=1;
-        }
-        t=t+timeSign;
-        // --- Rendering
-
-
-        // Render objects
-        //ctx.strokeRect(posX, posY, sizeX, sizeY);
-        //ctx.fillStyle = "red";
-        //ctx.fillText("Hello World!", posX+10, posY+25);
         ctx.putImageData(canvasData, 0, 0);
     }
 

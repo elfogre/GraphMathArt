@@ -2,11 +2,12 @@ import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
-import { PageHeader, Jumbotron } from 'react-bootstrap';
+import { PageHeader, Jumbotron} from 'react-bootstrap';
 
 import Header from '../components/Header';
 import MainSection from '../components/MainSection';
 import RenderBox from '../components/RenderBox';
+import FooterMenu from '../components/FooterMenu';
 import * as TodoActions from '../actions/index';
 
 class App extends Component {
@@ -15,11 +16,12 @@ class App extends Component {
     return (
       <div>
         <PageHeader>GraphMathArt <small>converting functions in actual art</small></PageHeader>
-        <Jumbotron>
+
           <Header
+            scene={scene}
             addTodo={actions.addTodo}
             />
-        </Jumbotron>
+
         <div>
           <RenderBox scene={scene}
             />
@@ -28,6 +30,7 @@ class App extends Component {
             actions={actions}
             />
         </div>
+        <FooterMenu scene={scene}/>
       </div>
     );
   }

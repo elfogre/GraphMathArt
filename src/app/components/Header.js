@@ -1,7 +1,20 @@
 import React, {PropTypes, Component} from 'react';
 import { Control, Form, actions } from 'react-redux-form';
 import TodoTextInput from './TodoTextInput';
-import { Grid, Row, Col, FormControl, ControlLabel, FormGroup, Button } from 'react-bootstrap';
+import { Grid, Row, Col, FormControl, ControlLabel, FormGroup, Button, Panel, Checkbox } from 'react-bootstrap';
+
+const MyTextInput = (props) => <FormControl type="text" {...props} />;
+const MyCheckbox = (props) => <Checkbox {...props} />;
+
+const bkgcolor = (
+  <h3>Background color</h3>
+);
+const framesize = (
+  <h3>Frame size</h3>
+);
+const timecontrol = (
+  <h3>Time control</h3>
+);
 
 class Header extends Component {
   constructor(props) {
@@ -20,41 +33,68 @@ class Header extends Component {
         onSubmit={(val) => this.handleSubmit(val)}
       >
         <Grid>
-          <Row className="show-grid">
-            <Col md={2}>
-              <FormGroup controlId="red">
-              <ControlLabel>Red</ControlLabel>
-              <Control.text model="scene.backgroundredcolour" />
+          <Panel header={bkgcolor}>
+            <Row className="show-grid">
+              <Col xs={4}>
+                <FormGroup>
+                <ControlLabel>Red value</ControlLabel>
+                <Control.text model="scene.backgroundredcolour" component={MyTextInput} value={this.props.scene.scene.backgroundredcolour}/>
+                </FormGroup>
+              </Col>
+
+              <Col xs={4}>
+                <FormGroup>
+                <ControlLabel>Green value</ControlLabel>
+                <Control.text model="scene.backgroundgreencolour" component={MyTextInput} value={this.props.scene.scene.backgroundgreencolour}/>
+                </FormGroup>
+              </Col>
+
+              <Col xs={4}>
+                <FormGroup>
+                <ControlLabel>Blue value</ControlLabel>
+                <Control.text model="scene.backgroundbluecolour" component={MyTextInput} value={this.props.scene.scene.backgroundbluecolour}/>
+                </FormGroup>
+              </Col>
+
+            </Row>
+          </Panel>
+          <Panel header={framesize}>
+            <Row className="show-grid">
+              <Col xs={4}>
+              <FormGroup>
+              <ControlLabel>x size</ControlLabel>
+              <Control.text model="scene.xsize" component={MyTextInput} value={this.props.scene.scene.xsize}/>
               </FormGroup>
-            </Col>
+              </Col>
 
-            <Col xs={4}>
-              <label>Green</label>
-              <Control.text model="scene.backgroundgreencolour" />
-            </Col>
+              <Col xs={4}>
+              <FormGroup>
+              <ControlLabel>y size</ControlLabel>
+              <Control.text model="scene.ysize" component={MyTextInput} value={this.props.scene.scene.ysize}/>
+              </FormGroup>
+              </Col>
+            </Row>
+          </Panel>
+          <Panel header={timecontrol}>
+            <Row className="show-grid">
+              <Col xs={4}>
+              <FormGroup>
+              <ControlLabel>Time function</ControlLabel>
+              <Control.text model="scene.timeIncrement" component={MyTextInput} value={this.props.scene.scene.timeIncrement}/>
+              </FormGroup>
+              </Col>
 
-            <Col xs={4}>
-              <label>Blue</label>
-              <Control.text model="scene.backgroundbluecolour" />
-            </Col>
-
-          </Row>
+              <Col xs={4}>
+              <FormGroup>
+              <ControlLabel>Actual time: </ControlLabel> {this.props.scene.scene.time}
+              <Control model="scene.timepaused" component={MyCheckbox}/>
+              </FormGroup>
+              </Col>
+            </Row>
+          </Panel>
         </Grid>
-        <Grid>
-          <Row className="show-grid">
-            <Col xs={4}>
-            <label>xwidth</label>
-            <Control.text model="scene.xsize" />
-            </Col>
 
-            <Col xs={4}>
-            <label>ywidth</label>
-            <Control.text model="scene.ysize" />
-            </Col>
-          </Row>
-        </Grid>
 
-        <Button  type="submit">Submit!</Button>
       </Form>
     );
   }
