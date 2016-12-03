@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     const {scene, todos, actions} = this.props;
     return (
-      <div>
+      <div className="row">
         <PageHeader>GraphMathArt <small>converting functions in actual art</small></PageHeader>
 
           <Header
