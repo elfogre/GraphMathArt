@@ -6,11 +6,9 @@ const initialScene = {
     backgroundredcolour:   '0',
     backgroundgreencolour: '0',
     backgroundbluecolour:  '0',
-    timeIncrement: 't+1',
-    time: 1,
-    timepaused: false
+    timeIncrement: 't+1'
   };
 
-export const scene = combineForms({
+export default combineForms({
     scene: initialScene,
   });
