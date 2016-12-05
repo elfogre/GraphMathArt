@@ -1,5 +1,5 @@
 import React, {PropTypes, Component} from 'react';
-import { Control, Form, actions } from 'react-redux-form';
+import { Control, Form } from 'react-redux-form';
 import TodoTextInput from './TodoTextInput';
 import { Grid, Row, Col, FormControl, ControlLabel, FormGroup, Button, Panel, Checkbox } from 'react-bootstrap';
 
@@ -31,28 +31,28 @@ class Header extends Component {
       <Form
         model="scene"
         onSubmit={(val) => this.handleSubmit(val)}
-      >
+        >
         <Grid>
           <Panel header={bkgcolor}>
             <Row className="show-grid">
               <Col xs={4}>
                 <FormGroup>
-                <ControlLabel>Red value</ControlLabel>
-                <Control.text model="scene.backgroundredcolour" component={MyTextInput} value={this.props.scene.scene.backgroundredcolour}/>
+                  <ControlLabel>Red value</ControlLabel>
+                  <Control.text model="scene.backgroundredcolour" component={MyTextInput} value={this.props.scene.scene.backgroundredcolour}/>
                 </FormGroup>
               </Col>
 
               <Col xs={4}>
                 <FormGroup>
-                <ControlLabel>Green value</ControlLabel>
-                <Control.text model="scene.backgroundgreencolour" component={MyTextInput} value={this.props.scene.scene.backgroundgreencolour}/>
+                  <ControlLabel>Green value</ControlLabel>
+                  <Control.text model="scene.backgroundgreencolour" component={MyTextInput} value={this.props.scene.scene.backgroundgreencolour}/>
                 </FormGroup>
               </Col>
 
               <Col xs={4}>
                 <FormGroup>
-                <ControlLabel>Blue value</ControlLabel>
-                <Control.text model="scene.backgroundbluecolour" component={MyTextInput} value={this.props.scene.scene.backgroundbluecolour}/>
+                  <ControlLabel>Blue value</ControlLabel>
+                  <Control.text model="scene.backgroundbluecolour" component={MyTextInput} value={this.props.scene.scene.backgroundbluecolour}/>
                 </FormGroup>
               </Col>
 
@@ -61,47 +61,55 @@ class Header extends Component {
           <Panel header={framesize}>
             <Row className="show-grid">
               <Col xs={4}>
-              <FormGroup>
-              <ControlLabel>x size</ControlLabel>
-              <Control.text model="scene.xsize" component={MyTextInput} value={this.props.scene.scene.xsize}/>
-              </FormGroup>
+                <FormGroup>
+                  <ControlLabel>x size</ControlLabel>
+                  <Control.text model="scene.xsize" component={MyTextInput} value={this.props.scene.scene.xsize}/>
+                </FormGroup>
               </Col>
 
               <Col xs={4}>
-              <FormGroup>
-              <ControlLabel>y size</ControlLabel>
-              <Control.text model="scene.ysize" component={MyTextInput} value={this.props.scene.scene.ysize}/>
-              </FormGroup>
+                <FormGroup>
+                  <ControlLabel>y size</ControlLabel>
+                  <Control.text model="scene.ysize" component={MyTextInput} value={this.props.scene.scene.ysize}/>
+                </FormGroup>
               </Col>
             </Row>
           </Panel>
           <Panel header={timecontrol}>
             <Row className="show-grid">
               <Col xs={4}>
-              <FormGroup>
-              <ControlLabel>Time function</ControlLabel>
-              <Control.text model="scene.timeIncrement" component={MyTextInput} value={this.props.scene.scene.timeIncrement}/>
-              </FormGroup>
+                <FormGroup>
+                  <ControlLabel>Time function</ControlLabel>
+                  <Control.text model="scene.timeIncrement" component={MyTextInput} value={this.props.scene.scene.timeIncrement}/>
+                </FormGroup>
               </Col>
 
               <Col xs={4}>
-              <FormGroup>
-              <ControlLabel>Actual time: </ControlLabel> {this.props.scene.scene.time}
-              <Control model="scene.timepaused" component={MyCheckbox}/>
-              </FormGroup>
+                <FormGroup>
+                  <ControlLabel>Actual time: </ControlLabel> {this.props.time.time}
+                </FormGroup>
               </Col>
-            </Row>
-          </Panel>
-        </Grid>
-
-
-      </Form>
-    );
+              <Col xs={4}>
+                <FormGroup>
+                { this.props.time.timepaused ?
+                            <Button onClick={this.props.actions.startTime}>Play</Button>
+                            :
+                            <Button onClick={this.props.actions.pauseTime}>Pause</Button>
+                }
+                <Button onClick={this.props.actions.restartTime}>Restart</Button>
+                </FormGroup>
+              </Col>
+              </Row>
+            </Panel>
+          </Grid>
+        </Form>
+      );
+    }
   }
-}
 
-Header.propTypes = {
-  addTodo: PropTypes.func.isRequired
-};
+  Header.propTypes = {
+    scene: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired
+  };
 
-export default Header;
+  export default Header;
