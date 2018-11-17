@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "bootstrap": "^3.3.7",
+    "bootstrap": ">=4.1.2",
     "classnames": "^2.2.5",
     "es6-shim": "^0.35.0",
     "font-awesome": "^4.7.0",
