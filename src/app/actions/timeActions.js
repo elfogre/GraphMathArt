@@ -1,14 +1,14 @@
 import * as types from '../constants/TimeActionTypes';
 
-export function pauseTime() {
+export function handlePauseTime() {
   return {type: types.PAUSE_TIME};
 }
 
-export function startTime() {
+export function handleStartTime() {
   return {type: types.START_TIME};
 }
 
-export function restartTime() {
+export function handleRestartTime() {
   return {type: types.RESTART_TIME};
 }
 

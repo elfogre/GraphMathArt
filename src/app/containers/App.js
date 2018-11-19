@@ -25,7 +25,10 @@ class App extends Component {
           />
 
         <div>
-          <RenderBox scene={scene} time={time} actions={timeActions}
+          <RenderBox
+            scene={scene}
+            time={time}
+            actions={timeActions}
             />
           <MainSection
             todos={todos}
@@ -42,7 +45,8 @@ App.propTypes = {
   time: PropTypes.object.isRequired,
   scene: PropTypes.object.isRequired,
   todos: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  timeActions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {

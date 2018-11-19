@@ -1,12 +1,12 @@
 import {combineReducers} from 'redux';
-import todos from './todos';
 import scene from './scene';
 import time from './time';
+import todos from './todos';
 
 const rootReducer = combineReducers({
-  time: time,
-  todos: todos,
-  scene: scene
+  time,
+  todos,
+  scene
 });
 
 export default rootReducer;

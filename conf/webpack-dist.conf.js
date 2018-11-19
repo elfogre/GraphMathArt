@@ -27,34 +27,28 @@ module.exports = {
         loaders: [
           'style',
           'css',
-          'sass',
-          'postcss'
+          'sass'
         ]
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
         loaders: [
-          'babel'
+          'babel-loader'
         ]
       }
     ]
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
       template: conf.path.src('index.html'),
       inject: true
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {unused: true, dead_code: true} // eslint-disable-line camelcase
     })
   ],
-  postcss: () => [autoprefixer],
   output: {
     path: path.join(process.cwd(), conf.paths.dist),
     filename: 'index-[hash].js'

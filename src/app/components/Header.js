@@ -1,10 +1,8 @@
 import React, {PropTypes, Component} from 'react';
-import { Control, Form } from 'react-redux-form';
-import TodoTextInput from './TodoTextInput';
-import { Grid, Row, Col, FormControl, ControlLabel, FormGroup, Button, Panel, Checkbox } from 'react-bootstrap';
+import {Control, Form} from 'react-redux-form';
+import {Grid, Row, Col, FormControl, ControlLabel, FormGroup, Button, Panel} from 'react-bootstrap';
 
-const MyTextInput = (props) => <FormControl type="text" {...props} />;
-const MyCheckbox = (props) => <Checkbox {...props} />;
+const MyTextInput = props => <FormControl type="text" {...props}/>;
 
 const bkgcolor = (
   <h3>Background color</h3>
@@ -17,9 +15,6 @@ const timecontrol = (
 );
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   handleSubmit(values) {
     // Do anything you want with the form value
@@ -30,7 +25,7 @@ class Header extends Component {
     return (
       <Form
         model="scene"
-        onSubmit={(val) => this.handleSubmit(val)}
+        // onSubmit={val => this.handleSubmit(val)}
         >
         <Grid>
           <Panel header={bkgcolor}>
@@ -91,25 +86,24 @@ class Header extends Component {
               </Col>
               <Col xs={4}>
                 <FormGroup>
-                { this.props.time.timepaused ?
-                            <Button onClick={this.props.actions.startTime}>Play</Button>
-                            :
-                            <Button onClick={this.props.actions.pauseTime}>Pause</Button>
-                }
-                <Button onClick={this.props.actions.restartTime}>Restart</Button>
+                  {this.props.time.timepaused ?
+                    <Button onClick={this.props.actions.handleStartTime}>Play</Button> : <Button onClick={this.props.actions.handlePauseTime}>Pause</Button>
+                  }
+                  <Button onClick={this.props.actions.handleRestartTime}>Restart</Button>
                 </FormGroup>
               </Col>
-              </Row>
-            </Panel>
-          </Grid>
-        </Form>
-      );
-    }
+            </Row>
+          </Panel>
+        </Grid>
+      </Form>
+    );
   }
+}
 
-  Header.propTypes = {
-    scene: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired
-  };
+Header.propTypes = {
+  scene: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
+  time: PropTypes.object.isRequired
+};
 
-  export default Header;
+export default Header;
