@@ -1,6 +1,7 @@
-import React, {PropTypes, Component} from 'react';
+import React, {Component} from 'react';
 import {Control, Form} from 'react-redux-form';
 import {Grid, Row, Col, FormControl, ControlLabel, FormGroup, Button, Panel} from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 const MyTextInput = props => <FormControl type="text" {...props}/>;
 
