@@ -1,3 +1,8 @@
+## Creating art with maths!
+
+Why don't you try it at https://elfogre.github.io/GraphMathArt/ ?
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
