@@ -1,6 +1,6 @@
 import {PAUSE_TIME, START_TIME, RESTART_TIME, SET_TIME} from '../constants/TimeActionTypes';
 
-const initialState = {time: 0, timepaused: false};
+const initialState = {time: 0, timepaused: true};
 
 export default function todos(state = initialState, action) {
   switch (action.type) {
