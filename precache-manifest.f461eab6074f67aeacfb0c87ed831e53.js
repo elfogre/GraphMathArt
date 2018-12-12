@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/GraphMathArt/static/js/runtime~main.98348b34.js"
   },
   {
-    "revision": "a8674f2355ec56a5dc28",
-    "url": "/GraphMathArt/static/js/main.a8674f23.chunk.js"
+    "revision": "6aaaf83d6957875bc3d0",
+    "url": "/GraphMathArt/static/js/main.6aaaf83d.chunk.js"
   },
   {
     "revision": "480fedc6c89e997c2f04",
     "url": "/GraphMathArt/static/js/1.480fedc6.chunk.js"
   },
   {
-    "revision": "dc750e2f309855f312e7f49b7f0cef90",
+    "revision": "c6744e924edac71deddc2e4b58ff6db4",
     "url": "/GraphMathArt/index.html"
   }
 ];
