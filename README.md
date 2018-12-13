@@ -2,6 +2,11 @@
 
 Why don't you try it at https://elfogre.github.io/GraphMathArt/ ?
 
+### Interesting examples
+red:`(Math.sin(x*t)*255)` green:`(Math.sin(y*t)*255)` blue:`(Math.sin((x+y)*t)*255)` time function:`t+0.001`
+
+red:`(x^(y+t))*t` green:`100` blue:`20` time function:`t+0.01`
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
