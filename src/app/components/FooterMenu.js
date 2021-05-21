@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Button} from 'react-bootstrap';
+import {Button, Row, Col} from 'react-bootstrap';
 
 const HTML_TEMPLATE = '<!DOCTYPE html><html><head><script></script></head><body><h1>My Web Page</h1></body></html>';
 
@@ -13,7 +13,11 @@ class FooterMenu extends Component {
 
   render() {
     return (
-      <Button onClick={this.handleExportGraph}>Export graph</Button>
+      <Row className="show-grid">
+        <Col xs={4}></Col>
+        <Button onClick={this.handleExportGraph}>Export graph</Button>
+      </Row>
+          
     );
   }
 }
