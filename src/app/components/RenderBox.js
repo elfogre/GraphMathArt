@@ -33,13 +33,35 @@ class RenderBox extends Component {
 
   updateCanvas() {
     try {
-      const t = this.props.time.time; // eslint-disable-line no-unused-vars
-      const canvasData = eval(`var canvasData = ctx.getImageData(0, 0, ${this.props.scene.scene.xsize}, ${this.props.scene.scene.ysize}); for (var x = 0; x < ${this.props.scene.scene.xsize}; x++) { for (var y = 0; y < ${this.props.scene.scene.ysize}; y++) { this.drawPixel (x,y, ${this.props.scene.scene.backgroundredcolour}%256, ${this.props.scene.scene.backgroundgreencolour}%256, ${this.props.scene.scene.backgroundbluecolour}%256, 255, canvasData);}}; canvasData;`);
+      const t = this.props.time.time;
+      const canvasData = this.evalCanvas(this.props.scene.scene, t);
       if (!this.props.time.timepaused) {
         this.props.actions.setTime(eval(this.props.scene.scene.timeIncrement));
       }
       ctx.putImageData(canvasData, 0, 0);
-    } catch (e) {}
+    } catch (e) {
+      console.log("Error", e.stack);
+      console.log("Error", e.name);
+      console.log("Error", e.message);
+    }
+  }
+
+  evalCanvas(scene, time) {
+    const t = time; // eslint-disable-line no-unused-vars
+    const canvasData =  eval(`
+    var x = ${scene.xInitialValue};
+    var y = ${scene.yInitialValue};
+    var canvasData = ctx.getImageData(0, 0, ${scene.xsize}, ${scene.ysize});
+    for (var canvasx = 0; canvasx < ${scene.xsize}; canvasx++) {
+      y = ${scene.yInitialValue};
+      x = ${scene.xIncrement};
+      for (var canvasy = 0; canvasy < ${scene.ysize}; canvasy++) {
+        y = ${scene.yIncrement};
+        this.drawPixel (canvasx,canvasy, (${scene.backgroundredcolour})%256, (${scene.backgroundgreencolour})%256, (${scene.backgroundbluecolour})%256, 255, canvasData);
+      }
+    }
+    canvasData;`);
+    return canvasData;
   }
 
   startrun(gameTick) {

@@ -11,6 +11,9 @@ const bkgcolor = (
 const framesize = (
   <h3>Frame size</h3>
 );
+const coordinatessize = (
+  <h3>Coordinates size</h3>
+);
 const timecontrol = (
   <h3>Time control</h3>
 );
@@ -58,15 +61,47 @@ class Header extends Component {
             <Row className="show-grid">
               <Col xs={4}>
                 <FormGroup>
-                  <ControlLabel>x size</ControlLabel>
+                  <ControlLabel>Image x size</ControlLabel>
                   <Control.text model="scene.xsize" component={MyTextInput} value={this.props.scene.scene.xsize}/>
                 </FormGroup>
               </Col>
 
               <Col xs={4}>
                 <FormGroup>
-                  <ControlLabel>y size</ControlLabel>
+                  <ControlLabel>Image y size</ControlLabel>
                   <Control.text model="scene.ysize" component={MyTextInput} value={this.props.scene.scene.ysize}/>
+                </FormGroup>
+              </Col>
+            </Row>
+          </Panel>
+          <Panel header={coordinatessize}>
+            <Row className="show-grid">
+              <Col xs={4}>
+                <FormGroup>
+                  <ControlLabel>x initial value</ControlLabel>
+                  <Control.text model="scene.xInitialValue" component={MyTextInput} value={this.props.scene.scene.xInitialValue}/>
+                </FormGroup>
+              </Col>
+
+              <Col xs={4}>
+                <FormGroup>
+                  <ControlLabel>x coordinates function</ControlLabel>
+                  <Control.text model="scene.xIncrement" component={MyTextInput} value={this.props.scene.scene.xIncrement}/>
+                </FormGroup>
+              </Col>
+            </Row>
+            <Row className="show-grid">
+              <Col xs={4}>
+                <FormGroup>
+                  <ControlLabel>y initial value</ControlLabel>
+                  <Control.text model="scene.yInitialValue" component={MyTextInput} value={this.props.scene.scene.yInitialValue}/>
+                </FormGroup>
+              </Col>
+
+              <Col xs={4}>
+                <FormGroup>
+                  <ControlLabel>y coordinates function</ControlLabel>
+                  <Control.text model="scene.yIncrement" component={MyTextInput} value={this.props.scene.scene.yIncrement}/>
                 </FormGroup>
               </Col>
             </Row>
